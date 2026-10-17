@@ -1,0 +1,98 @@
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
+
+.explore {
+  padding-bottom: 96px;
+
+  &__intro { display: grid; gap: 20px; margin-bottom: 36px; }
+
+  &__title { @include display(3rem, .98, -.035em); }
+
+  &__lead { color: $text-body; font-size: .9375rem; line-height: 1.7; }
+
+  &__bar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 24px 0 28px;
+  }
+
+  .results { min-height: 420px; }
+
+  @include up($bp-md) {
+    padding-bottom: 144px;
+
+    &__intro { margin-bottom: 64px; }
+
+    &__bar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: $gutter;
+      margin: 28px 0 56px;
+    }
+
+    .results { min-height: 520px; }
+  }
+
+  @include up($bp-lg) {
+    &__intro {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: $gutter;
+      align-items: end;
+    }
+
+    &__title { grid-column: 1 / 8; font-size: 5rem; }
+    &__lead { grid-column: 9 / 13; font-size: 1rem; }
+  }
+}
+
+.about {
+  padding-bottom: 88px;
+
+  &__grid { display: grid; gap: 28px; }
+
+  &__title { @include display(2.5rem, 1, -.03em); }
+
+  &__lead {
+    margin-bottom: 40px;
+    font-size: 1.1875rem;
+    line-height: 1.5;
+    letter-spacing: -.01em;
+  }
+
+  &__points {
+    display: grid;
+    gap: 24px;
+
+    li { padding-top: 16px; border-top: 1px solid $petrol; }
+
+    h3 { margin-bottom: 8px; font-family: $font-display; font-size: 1.125rem; font-weight: 500; }
+    p { color: $text-muted; font-size: .875rem; line-height: 1.65; }
+  }
+
+  &__note {
+    margin-top: 32px;
+    color: $text-muted;
+    font-size: .75rem;
+    line-height: 1.65;
+  }
+
+  @include up($bp-md) {
+    padding-bottom: 144px;
+
+    &__points { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: $gutter; }
+  }
+
+  @include up($bp-lg) {
+    &__grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: $gutter;
+    }
+
+    &__title { grid-column: 1 / 6; font-size: 3.5rem; }
+    &__body { grid-column: 7 / 13; }
+    &__lead { margin-bottom: 56px; font-size: 1.5rem; }
+    &__note { margin-top: 40px; font-size: .8125rem; }
+  }
+}

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ORBIT — Explore Beyond</title>
+  <meta name="description" content="ORBIT: space exploration through real astronomical images from NASA.">
+  <meta name="theme-color" content="#F7F8FA">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ORBIT — Explore Beyond">
+  <meta property="og:description" content="Explore galaxies, nebulae, and missions through real NASA astronomy imagery.">
+  <meta property="og:image" content="assets/images/hero.jpg">
+  <meta property="og:image:alt" content="Illustration of a spiral galaxy">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a class="skip" href="#explore">Skip to content</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#home" aria-label="ORBIT, home">
+        <svg class="logo__mark" aria-hidden="true" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <ellipse cx="15" cy="15" rx="13" ry="5.5" transform="rotate(-28 15 15)" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="15" cy="15" r="3.6" fill="currentColor"/>
+          <circle cx="25.6" cy="9.6" r="1.9" fill="#A9C0CD"/>
+        </svg>
+        <span class="logo__word">ORBIT</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary navigation">
+        <a class="nav__link" href="#home" data-section="home">Home</a>
+        <a class="nav__link" href="#explore" data-section="explore">Explore</a>
+        <a class="nav__link" href="#about" data-section="about">About</a>
+      </nav>
+
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 7H19M3 15H19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="home" data-index="1">
+      <div class="hero__text">
+        <p class="eyebrow hero__eyebrow">NASA Open Data · Space Exploration Platform</p>
+        <h1 class="hero__title">
+          <span>BEYOND</span><span>WHAT WE</span><span>KNOW<i>.</i></span>
+        </h1>
+        <p class="hero__lead">A gateway to real NASA astronomy imagery: galaxies, nebulae, and missions, thoughtfully organized for exploration.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#explore">Explore the universe <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="link" href="#apod">View today's image</a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__art" role="img" aria-label="Illustration of a spiral galaxy"></div>
+        <span class="hero__tag">ORBIT · ILLUSTRATION</span>
+        <div class="hero__caption glass">
+          <p class="hero__caption-eyebrow">ORBIT · ORIGINAL RENDER</p>
+          <p class="hero__caption-title">Spiral Galaxy</p>
+          <p class="hero__caption-credit">Illustration by ORBIT</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="apod container" id="apod" data-index="2" aria-labelledby="apod-title">
+      <div class="section-head reveal">
+        <p class="section-head__label">02 — Astronomy Picture of the Day</p>
+        <p class="section-head__meta" id="apod-today"></p>
+      </div>
+
+      <div class="apod__grid reveal" id="apod-grid" aria-busy="true">
+        <figure class="apod__media" id="apod-media">
+          <div class="apod__skeleton skeleton"></div>
+        </figure>
+        <div class="apod__body">
+          <p class="apod__date" id="apod-date"></p>
+          <h2 class="apod__title" id="apod-title">Loading…</h2>
+          <p class="apod__text" id="apod-text"></p>
+          <p class="apod__credit" id="apod-credit"></p>
+          <button class="btn btn--ghost" id="apod-open" type="button" disabled>View details <span class="btn__arrow" aria-hidden="true">→</span></button>
+          <p class="apod__error" id="apod-error" role="alert" hidden>Couldn't load today's image. Please try again later.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore container" id="explore" data-index="3" aria-labelledby="explore-title">
+      <div class="section-head reveal">
+        <p class="section-head__label">03 — Image Library</p>
+        <p class="section-head__meta">NASA Image and Video Library</p>
+      </div>
+
+      <div class="explore__intro reveal">
+        <h2 class="explore__title" id="explore-title">Explore the<br>universe</h2>
+        <p class="explore__lead">Search NASA's public archive and filter by object type. Every image retains its original title, date, and credits.</p>
+      </div>
+
+      <form class="search" id="search-form" role="search" novalidate>
+        <svg class="search__icon" aria-hidden="true" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M17 17L23 23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <label class="sr-only" for="search-input">Search NASA images</label>
+        <input class="search__input" id="search-input" type="search" name="q" autocomplete="off" placeholder="Search galaxies, nebulae, missions…">
+        <button class="btn btn--primary search__submit" type="submit">Search</button>
+      </form>
+
+      <div class="explore__bar">
+        <div class="chips" id="chips" role="group" aria-label="Quick filters">
+          <button class="chip is-active" type="button" data-query="universe" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-query="galaxy" aria-pressed="false">Galaxies</button>
+          <button class="chip" type="button" data-query="nebula" aria-pressed="false">Nebulae</button>
+          <button class="chip" type="button" data-query="moon" aria-pressed="false">Moon</button>
+          <button class="chip" type="button" data-query="earth from space" aria-pressed="false">Earth</button>
+          <button class="chip" type="button" data-query="mission" aria-pressed="false">Missions</button>
+        </div>
+        <p class="explore__count" id="count" aria-live="polite"></p>
+      </div>
+
+      <div class="results">
+        <div class="state state--loading" id="state-loading" role="status" aria-label="Loading images" hidden>
+          <ul class="grid" aria-hidden="true">
+            <li class="skeleton-card"><div class="skeleton"></div><span class="skeleton"></span><span class="skeleton"></span></li>
+            <li class="skeleton-card"><div class="skeleton"></div><span class="skeleton"></span><span class="skeleton"></span></li>
+            <li class="skeleton-card"><div class="skeleton"></div><span class="skeleton"></span><span class="skeleton"></span></li>
+            <li class="skeleton-card"><div class="skeleton"></div><span class="skeleton"></span><span class="skeleton"></span></li>
+          </ul>
+        </div>
+
+        <ul class="grid" id="results" hidden></ul>
+
+        <div class="state state--empty" id="state-empty" hidden>
+          <svg aria-hidden="true" width="200" height="200" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="64" stroke="#A9C0CD"/><ellipse cx="100" cy="100" rx="92" ry="30" transform="rotate(-24 100 100)" stroke="#263A54" stroke-dasharray="3 6"/><circle cx="100" cy="100" r="4" fill="#263A54"/></svg>
+          <div>
+            <p class="eyebrow">No results</p>
+            <h3 class="state__title">Nothing found for “<span id="empty-query"></span>”.</h3>
+            <p class="state__text">Try another term, such as galaxy, nebula, or Apollo, or clear the active filters.</p>
+            <button class="btn btn--ghost" id="reset-search" type="button">Clear search</button>
+          </div>
+        </div>
+
+        <div class="state state--error" id="state-error" role="alert" hidden>
+          <svg aria-hidden="true" width="200" height="200" viewBox="0 0 200 200" fill="none"><path d="M36 128A72 72 0 0 1 164 128" stroke="#A9C0CD"/><path d="M62 128A46 46 0 0 1 138 128" stroke="#263A54" stroke-dasharray="3 6"/><circle cx="100" cy="128" r="4" fill="#263A54"/><path d="M36 128L164 128" stroke="#E6EAF0"/></svg>
+          <div>
+            <p class="eyebrow">Signal lost</p>
+            <h3 class="state__title">We couldn’t reach the NASA API.</h3>
+            <p class="state__text">Check your connection and try again. If the problem continues, the service may be temporarily offline.</p>
+            <button class="btn btn--primary" id="retry-search" type="button">Try again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about container" id="about" data-index="4" aria-labelledby="about-title">
+      <div class="section-head reveal">
+        <p class="section-head__label">04 — About ORBIT</p>
+        <p class="section-head__meta">Independent project</p>
+      </div>
+      <div class="about__grid reveal">
+        <h2 class="about__title" id="about-title">Built on<br>public data.</h2>
+        <div class="about__body">
+          <p class="about__lead">ORBIT transforms NASA's open APIs into an editorial experience: real images, thoughtfully presented, with credits always in view.</p>
+          <ul class="about__points">
+            <li><h3>Real imagery</h3><p>Every image in the library comes from NASA telescopes and missions.</p></li>
+            <li><h3>Open sources</h3><p>Data from APOD and the NASA Image and Video Library.</p></li>
+            <li><h3>Credits first</h3><p>Attribution and a source link for every full-size image.</p></li>
+          </ul>
+          <p class="about__note">ORBIT is not affiliated with or endorsed by NASA. Images and data belong to their respective authors and are presented for informational purposes.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <p class="footer__word">ORBIT</p>
+          <p class="footer__tag">Explore Beyond</p>
+        </div>
+        <nav class="footer__col" aria-label="Footer">
+          <p class="footer__label">Navigate</p>
+          <a href="#home">Home</a>
+          <a href="#explore">Explore</a>
+          <a href="#about">About</a>
+        </nav>
+        <div class="footer__col">
+          <p class="footer__label">Sources</p>
+          <a href="https://api.nasa.gov" target="_blank" rel="noopener">NASA Open APIs ↗</a>
+          <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener">APOD ↗</a>
+          <a href="https://images.nasa.gov" target="_blank" rel="noopener">NASA Image Library ↗</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>Images and data: NASA Open APIs. ORBIT is an independent project and is not affiliated with or endorsed by NASA.</p>
+        <p>© <span id="year">2026</span> ORBIT</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-title">
+    <div class="modal__panel">
+      <div class="modal__media">
+        <img class="modal__img" id="modal-img" alt="">
+        <span class="modal__tag">IMG · NASA API</span>
+      </div>
+      <div class="modal__body">
+        <div class="modal__top">
+          <span class="modal__cat" id="modal-cat"></span>
+          <button class="modal__close" id="modal-close" type="button" aria-label="Close">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3L13 13M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <p class="modal__date" id="modal-date"></p>
+        <h3 class="modal__title" id="modal-title"></h3>
+        <p class="modal__desc" id="modal-desc"></p>
+        <div class="modal__credit">
+          <p class="modal__credit-label">Credit</p>
+          <p id="modal-credit"></p>
+        </div>
+        <a class="btn btn--primary modal__source" id="modal-link" href="https://images.nasa.gov" target="_blank" rel="noopener">View source on NASA <span class="btn__arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </dialog>
+
+  <template id="card-template">
+    <li>
+      <button class="card" type="button">
+        <span class="card__media">
+          <img class="card__img" alt="" loading="lazy">
+          <span class="card__more">View image →</span>
+        </span>
+        <span class="card__cat"></span>
+        <span class="card__title"></span>
+        <span class="card__date"></span>
+      </button>
+    </li>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

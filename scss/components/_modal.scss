@@ -1,0 +1,153 @@
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
+
+.modal {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $ink;
+
+  &::backdrop {
+    background: rgba($ink, .55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  &[open] { display: flex; align-items: flex-end; }
+
+  &__panel {
+    width: 100%;
+    max-height: 92vh;
+    overflow: auto;
+    background: $paper;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -20px 60px -20px rgba($ink, .5);
+    animation: sheet .4s $ease both;
+  }
+
+  &__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: $ink;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .9;
+    transition: opacity .5s;
+
+    &.is-ready { opacity: 1; }
+  }
+
+  &__tag {
+    position: absolute;
+    left: 14px;
+    bottom: 12px;
+    color: rgba($silver, .8);
+    font-size: .5625rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+  }
+
+  &__body { padding: 24px 20px 28px; display: flex; flex-direction: column; }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__cat {
+    @include eyebrow;
+    font-size: .6875rem;
+    color: $text-muted;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid rgba($petrol, .25);
+    border-radius: 999px;
+    color: $petrol;
+    transition: background .25s, border-color .25s;
+
+    &:hover { background: $silver; border-color: $petrol; }
+  }
+
+  &__date {
+    margin-bottom: 10px;
+    color: $text-muted;
+    font-size: .8125rem;
+    letter-spacing: .04em;
+  }
+
+  &__title {
+    @include display(2.125rem, 1.05, -.025em);
+    margin-bottom: 16px;
+  }
+
+  &__desc {
+    margin-bottom: 24px;
+    color: $text-body;
+    font-size: .9375rem;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+
+  &__credit {
+    margin-bottom: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba($petrol, .14);
+    font-size: .875rem;
+  }
+
+  &__credit-label {
+    margin-bottom: 4px;
+    color: $text-muted;
+    font-size: .625rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  &__source { width: 100%; }
+
+  @include up($bp-md) {
+    &[open] { align-items: center; justify-content: center; padding: 40px; }
+
+    &__panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      max-width: 1120px;
+      max-height: calc(100vh - 80px);
+      border: 1px solid rgba(#fff, .6);
+      border-radius: $radius-btn;
+      box-shadow: 0 40px 100px -30px rgba($ink, .6);
+      animation: none;
+    }
+
+    &__media { aspect-ratio: auto; min-height: 560px; }
+    &__body { padding: 36px 40px 40px; }
+    &__top { margin-bottom: 40px; }
+    &__title { font-size: 2.375rem; margin-bottom: 24px; }
+    &__source { margin-top: auto; }
+  }
+}
+
+@keyframes sheet {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
