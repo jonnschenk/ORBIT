@@ -1,0 +1,13 @@
+{
+  "name": "orbit-explore-beyond",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ORBIT: space exploration through real astronomical images from NASA.",
+  "scripts": {
+    "build:css": "sass scss/main.scss css/main.css --style=compressed --no-source-map",
+    "watch:css": "sass scss/main.scss css/main.css --style=compressed --no-source-map --watch"
+  },
+  "devDependencies": {
+    "sass": "^1.105.2"
+  }
+}

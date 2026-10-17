@@ -1,0 +1,93 @@
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
+
+.chips {
+  display: flex;
+  gap: 8px;
+  margin: 0 (-$margin-mobile);
+  padding: 0 $margin-mobile 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  @include up($bp-md) {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+.chip {
+  flex: none;
+  min-height: 44px;
+  padding: 0 20px;
+  background: transparent;
+  border: 1px solid rgba($petrol, .25);
+  border-radius: 999px;
+  color: $petrol;
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  transition: background .25s, border-color .25s, color .25s;
+
+  &:hover { background: $silver; border-color: $petrol; }
+
+  &.is-active {
+    background: $petrol;
+    border-color: $petrol;
+    color: $paper;
+  }
+}
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $petrol;
+  color: $petrol;
+  transition: box-shadow .25s;
+
+  &:focus-within { box-shadow: 0 1px 0 0 $petrol; }
+
+  &__icon { flex: none; }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: $ink;
+    font-family: $font-display;
+    font-size: 1.25rem;
+    letter-spacing: -.01em;
+
+    &:focus { outline: none; }
+    &::placeholder { color: #8A95A5; }
+
+    @include up($bp-md) { font-size: 1.875rem; }
+  }
+
+  &__submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+    cursor: pointer;
+
+    @include up($bp-md) {
+      width: auto;
+      min-height: 48px;
+      margin-top: 0;
+    }
+  }
+
+  @include up($bp-md) {
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding-bottom: 16px;
+  }
+}

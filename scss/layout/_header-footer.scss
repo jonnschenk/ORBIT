@@ -1,0 +1,193 @@
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba($paper, .86);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba($petrol, .08);
+
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+
+    @include up($bp-md) { height: 80px; }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $petrol;
+
+  &__word {
+    color: $ink;
+    font-family: $font-display;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+  }
+
+  @include up($bp-md) {
+    gap: 12px;
+    &__word { font-size: 1.25rem; }
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  padding: 8px $margin-mobile 24px;
+  background: $paper;
+  border-bottom: 1px solid rgba($petrol, .08);
+
+  &.is-open { display: flex; }
+
+  &__link {
+    position: relative;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba($petrol, .1);
+    color: $text-muted;
+    font-family: $font-display;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -.02em;
+    transition: color .25s;
+
+    &:hover, &.is-active { color: $ink; }
+  }
+
+  @include up($bp-md) {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 44px;
+    padding: 0;
+    background: none;
+    border: 0;
+
+    &__link {
+      padding: 6px 0;
+      border: 0;
+      font-family: $font-body;
+      font-size: .875rem;
+      letter-spacing: .02em;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: $petrol;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .35s $ease;
+      }
+
+      &:hover::after, &.is-active::after { transform: scaleX(1); }
+    }
+  }
+}
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  color: $ink;
+
+  @include up($bp-md) { display: none; }
+}
+
+.footer {
+  background: $ink;
+  color: $silver;
+
+  .container { padding-top: 64px; padding-bottom: 32px; }
+
+  &__top {
+    display: grid;
+    gap: 32px;
+    padding-bottom: 48px;
+
+    @include up($bp-md) {
+      grid-template-columns: 6fr 2fr 3fr;
+      gap: $gutter;
+      padding-bottom: 80px;
+    }
+  }
+
+  &__word {
+    color: $ice;
+    font-family: $font-display;
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: .9;
+    letter-spacing: .1em;
+
+    @include up($bp-md) { font-size: 7.5rem; letter-spacing: .12em; }
+  }
+
+  &__tag {
+    margin-top: 18px;
+    color: #8FA0B3;
+    font-size: .6875rem;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 1rem;
+
+    a { padding: 8px 0; transition: color .25s; &:hover { color: $ice; } }
+
+    @include up($bp-md) { gap: 10px; a { padding: 0; } }
+  }
+
+  &__label {
+    margin-bottom: 6px;
+    color: #8FA0B3;
+    font-size: .625rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid rgba($ice, .2);
+    color: #8FA0B3;
+    font-size: .75rem;
+    line-height: 1.6;
+
+    @include up($bp-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 48px;
+      p:first-child { max-width: 640px; }
+    }
+  }
+}

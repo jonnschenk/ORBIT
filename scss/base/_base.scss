@@ -1,0 +1,128 @@
+@use '../abstracts/tokens' as *;
+@use '../abstracts/mixins' as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  margin: 0;
+  background: $paper;
+  color: $ink;
+  font-family: $font-body;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+
+  &.is-locked { overflow: hidden; }
+}
+
+h1, h2, h3, p, ul, figure { margin: 0; padding: 0; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid $petrol;
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $margin-mobile;
+
+  @include up($bp-md) { padding: 0 $margin-desktop; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: $petrol;
+  color: $paper;
+  transition: top .2s;
+
+  &:focus { top: 12px; }
+}
+
+.eyebrow {
+  @include eyebrow;
+  color: $text-muted;
+}
+
+.glass { @include glass; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 20px;
+  margin-bottom: 32px;
+  border-top: 1px solid rgba($petrol, .14);
+
+  @include up($bp-md) {
+    padding-top: 24px;
+    margin-bottom: 56px;
+  }
+
+  &__label {
+    @include eyebrow;
+    font-size: .7rem;
+    color: $petrol;
+  }
+
+  &__meta {
+    display: none;
+    font-size: .8rem;
+    letter-spacing: .04em;
+    color: $text-muted;
+
+    @include up($bp-md) { display: block; }
+  }
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .9s $ease, transform .9s $ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes pulse {
+  50% { opacity: .45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+}
