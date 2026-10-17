@@ -5,7 +5,7 @@ Semantic HTML · SASS · Vanilla JavaScript (ES modules) · Axios (CDN). No fram
 
 **Author:** Jonathan Ramírez
 
-- **Live site:** _coming soon_
+- **Live site:** https://jonnschenk.github.io/ORBIT/
 - **Repository:** _coming soon_
 
 <!-- Screenshot: save it as assets/images/screenshot.png and uncomment the line below.
