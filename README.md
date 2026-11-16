@@ -6,7 +6,7 @@ Semantic HTML · SASS · Vanilla JavaScript (ES modules) · Axios (CDN). No fram
 **Author:** Jonathan Ramírez
 
 - **Live site:** https://jonnschenk.github.io/ORBIT/
-- **Repository:** _coming soon_
+- **Repository:** https://github.com/jonnschenk/ORBIT
 
 <!-- Screenshot: save it as assets/images/screenshot.png and uncomment the line below.
 ![ORBIT home page](assets/images/screenshot.png)
@@ -58,6 +58,9 @@ The **Live Sass Compiler** extension also works; `.vscode/settings.json` points 
 `DEMO_KEY` has a low limit (about 30 requests per hour per IP). For production, request a free key at
 https://api.nasa.gov and update `js/config.js`.
 
+ORBIT is a static site with no backend, so any key in `js/config.js` is visible in the browser. NASA keys only grant
+access to public data, so the risk is low; if the limit is reached, the APOD section falls back to a local illustration.
+
 ## Project structure
 
 ```
@@ -97,7 +100,3 @@ Space Grotesk (headings) · Inter (body text)
 Images and data: NASA Open APIs. ORBIT is an independent project and is not affiliated with or endorsed by NASA.
 
 © 2026 Jonathan Ramírez
-# ORBIT---Explore-Beyond
-# ORBIT
-# ORBIT
-# ORBIT
