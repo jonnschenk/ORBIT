@@ -27,7 +27,7 @@ export function openModal(item) {
   if (item.id !== 'apod') {
     getLargeImage(item.id)
       .then((url) => { if (url && token === openToken) img.src = url; })
-      .catch(() => {});
+      .catch((error) => console.warn('[ORBIT] Full-size image unavailable, keeping thumbnail:', error));
   }
 }
 
